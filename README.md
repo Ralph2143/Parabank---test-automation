@@ -47,11 +47,11 @@ These scripts are useful for **testing, automation practice, and QA scenarios**,
   🚀 Setup & Usage
 **1️⃣ Clone this repository**
 
-git clone https://github.com/<your-username>/Parabank---test-automation.git
-```cd Parabank---test-automation
+`git clone https://github.com/<your-username>/Parabank---test-automation.git`
+`cd Parabank---test-automation`
 
 **2️⃣ Install dependencies**
-```pip install selenium
+`pip install selenium`
 
 **3️⃣ Download and place ChromeDriver**
 
@@ -63,14 +63,14 @@ git clone https://github.com/<your-username>/Parabank---test-automation.git
 **4️⃣ Edit Configurations (Optional)**
 
 Each script includes configurable variables at the top:
-  USERNAME, PASSWORD (login credentials)
-  NUM_PAYMENTS / Num_Reg (loop counts)
+  `USERNAME, PASSWORD` (login credentials)
+  `NUM_PAYMENTS / Num_Reg` (loop counts)
   Randomized data arrays (names, cities, amounts, etc.)
 
 **5️⃣ Run a script**
-  python billpay.py
-  python fundtransfer.py
-  python registration.py
+  `python billpay.py`
+ `python fundtransfer.py`
+  `python registration.py`
 
 **🧪 Notes**
 
@@ -82,9 +82,9 @@ Each script includes configurable variables at the top:
 **💡 Tips**
 Increase WAIT_SECONDS if you have a slow internet connection.
 Use a virtual environment (venv) to keep dependencies isolated:
-  python -m venv venv
-  source venv/bin/activate   # Mac/Linux
-  venv\Scripts\activate      # Windows
+  `python -m venv venv`
+  `source venv/bin/activate`   # Mac/Linux
+  `venv\Scripts\activate`      # Windows
 
 **📜 License**
 
