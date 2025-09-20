@@ -44,7 +44,8 @@ These scripts are useful for **testing, automation practice, and QA scenarios**,
   ```bash
   pip install selenium
 
-  🚀 Setup & Usage
+**  🚀 Setup & Usage**
+
 **1️⃣ Clone this repository**
 
 `git clone https://github.com/<your-username>/Parabank---test-automation.git`
@@ -68,9 +69,10 @@ Each script includes configurable variables at the top:
   Randomized data arrays (names, cities, amounts, etc.)
 
 **5️⃣ Run a script**
-  `python billpay.py`
- `python fundtransfer.py`
-  `python registration.py`
+```bash
+  python billpay.py
+  python fundtransfer.py
+  python registration.py
 
 **🧪 Notes**
 
@@ -82,9 +84,9 @@ Each script includes configurable variables at the top:
 **💡 Tips**
 Increase WAIT_SECONDS if you have a slow internet connection.
 Use a virtual environment (venv) to keep dependencies isolated:
-  `python -m venv venv`
-  `source venv/bin/activate`   # Mac/Linux
-  `venv\Scripts\activate`      # Windows
+  python -m venv venv
+  source venv/bin/activate  # Mac/Linux
+  venv\Scripts\activate     # Windows
 
 **📜 License**
 
