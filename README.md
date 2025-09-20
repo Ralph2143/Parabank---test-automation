@@ -1,4 +1,4 @@
-# Parabank Automation Scripts
+# Parabank---test-automation
 
 This repository contains **Selenium-based automation scripts** designed to simulate various user actions on the [Parabank](https://parabank.parasoft.com/parabank/index.htm) demo banking site.  
 These scripts are useful for **testing, automation practice, and QA scenarios**, such as bulk bill payments, fund transfers, and account registration.
@@ -40,41 +40,34 @@ These scripts are useful for **testing, automation practice, and QA scenarios**,
 - **Python 3.8+**
 - **Google Chrome Browser**
 - **ChromeDriver** (matching your Chrome version)
-- Required Python packages:
+- Required Python package:
   ```bash
   pip install selenium
 
-  Clone this repository
+  🚀 Setup & Usage
+1️⃣ Clone this repository
 
-git clone https://github.com/<your-username>/parabank-automation.git
-cd parabank-automation
+git clone https://github.com/<your-username>/Parabank---test-automation.git
+cd Parabank---test-automation
 
-
-Install dependencies
-
+2️⃣ Install dependencies
 pip install selenium
 
-Download and place chromedriver
+3️⃣ Download and place ChromeDriver
 
 Download ChromeDriver
- matching your Chrome version.
-
+matching your Chrome version.
 Place it in the project directory or specify its path in the script:
-
 CHROMEDRIVER_PATH = "chromedriver.exe"
 
+4️⃣ Edit Configurations (Optional)
 
-Edit Configurations (Optional)
 Each script includes configurable variables at the top:
+-USERNAME, PASSWORD (login credentials)
+-NUM_PAYMENTS / Num_Reg (loop counts)
+-Randomized data arrays (names, cities, amounts, etc.)
 
-USERNAME, PASSWORD (login credentials)
-
-NUM_PAYMENTS / Num_Reg (loop counts)
-
-Randomized data arrays (names, cities, amounts, etc.)
-
-Run a script
-
+5️⃣ Run a script
 python billpay.py
 python fundtransfer.py
 python registration.py
@@ -82,25 +75,20 @@ python registration.py
 🧪 Notes
 
 The Parabank
- site is a public demo, so data resets periodically.
-
-Scripts are intended for testing and educational purposes only.
-
-Use the --headless=new Chrome option if you want to run the scripts without opening a browser window:
-
+-site is a public demo, so data resets periodically.
+-Scripts are intended for testing and educational purposes only.
+-Use the --headless=new Chrome option if you want to run the scripts without opening a browser window:
 options.add_argument("--headless=new")
 
 💡 Tips
-
 Increase WAIT_SECONDS if you have a slow internet connection.
-
 Use a virtual environment (venv) to keep dependencies isolated:
-
-python -m venv venv
-source venv/bin/activate   # Mac/Linux
-venv\Scripts\activate      # Windows
+-python -m venv venv
+-source venv/bin/activate   # Mac/Linux
+-venv\Scripts\activate      # Windows
 
 📜 License
 
 This project is provided for educational and testing purposes.
 Please use responsibly and avoid running excessive automation on shared servers.
+
