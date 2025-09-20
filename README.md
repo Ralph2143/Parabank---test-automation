@@ -34,6 +34,25 @@ These scripts are useful for **testing, automation practice, and QA scenarios**,
 - Automatically increments usernames (`test1`, `test2`, …).
 
 ---
+**🧪 Notes**
+
+  The Parabank site is a public demo, so data resets periodically.
+  Scripts are intended for testing and educational purposes only.
+  Use the --headless=new Chrome option if you want to run the scripts without opening a browser window:
+  options.add_argument("--headless=new")
+
+**💡 Tips**
+Increase WAIT_SECONDS if you have a slow internet connection.
+Use a virtual environment (venv) to keep dependencies isolated:
+  `python -m venv venv`
+ `source venv/bin/activate`  # Mac/Linux
+  `venv\Scripts\activate`     # Windows
+
+**📜 License**
+
+_This project is provided for educational and testing purposes.
+Please use responsibly and avoid running excessive automation on shared servers._
+
 
 ## 🛠️ Requirements
 
@@ -74,22 +93,4 @@ Each script includes configurable variables at the top:
   python fundtransfer.py
   python registration.py
 
-**🧪 Notes**
-
-  The Parabank site is a public demo, so data resets periodically.
-  Scripts are intended for testing and educational purposes only.
-  Use the --headless=new Chrome option if you want to run the scripts without opening a browser window:
-  options.add_argument("--headless=new")
-
-**💡 Tips**
-Increase WAIT_SECONDS if you have a slow internet connection.
-Use a virtual environment (venv) to keep dependencies isolated:
-  python -m venv venv
-  source venv/bin/activate  # Mac/Linux
-  venv\Scripts\activate     # Windows
-
-**📜 License**
-
-_This project is provided for educational and testing purposes.
-Please use responsibly and avoid running excessive automation on shared servers._
 
