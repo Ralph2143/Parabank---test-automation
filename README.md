@@ -45,50 +45,49 @@ These scripts are useful for **testing, automation practice, and QA scenarios**,
   pip install selenium
 
   🚀 Setup & Usage
-1️⃣ Clone this repository
+**1️⃣ Clone this repository**
 
 git clone https://github.com/<your-username>/Parabank---test-automation.git
-cd Parabank---test-automation
+```cd Parabank---test-automation
 
-2️⃣ Install dependencies
-pip install selenium
+**2️⃣ Install dependencies**
+```pip install selenium
 
-3️⃣ Download and place ChromeDriver
+**3️⃣ Download and place ChromeDriver**
 
-Download ChromeDriver
-matching your Chrome version.
-Place it in the project directory or specify its path in the script:
-CHROMEDRIVER_PATH = "chromedriver.exe"
+**Download ChromeDriver**
+  matching your Chrome version.
+  Place it in the project directory or specify its path in the script:
+  CHROMEDRIVER_PATH = "chromedriver.exe"
 
-4️⃣ Edit Configurations (Optional)
+**4️⃣ Edit Configurations (Optional)**
 
 Each script includes configurable variables at the top:
--USERNAME, PASSWORD (login credentials)
--NUM_PAYMENTS / Num_Reg (loop counts)
--Randomized data arrays (names, cities, amounts, etc.)
+  USERNAME, PASSWORD (login credentials)
+  NUM_PAYMENTS / Num_Reg (loop counts)
+  Randomized data arrays (names, cities, amounts, etc.)
 
-5️⃣ Run a script
-python billpay.py
-python fundtransfer.py
-python registration.py
+**5️⃣ Run a script**
+  python billpay.py
+  python fundtransfer.py
+  python registration.py
 
-🧪 Notes
+**🧪 Notes**
 
-The Parabank
--site is a public demo, so data resets periodically.
--Scripts are intended for testing and educational purposes only.
--Use the --headless=new Chrome option if you want to run the scripts without opening a browser window:
-options.add_argument("--headless=new")
+  The Parabank site is a public demo, so data resets periodically.
+  Scripts are intended for testing and educational purposes only.
+  Use the --headless=new Chrome option if you want to run the scripts without opening a browser window:
+  options.add_argument("--headless=new")
 
-💡 Tips
+**💡 Tips**
 Increase WAIT_SECONDS if you have a slow internet connection.
 Use a virtual environment (venv) to keep dependencies isolated:
--python -m venv venv
--source venv/bin/activate   # Mac/Linux
--venv\Scripts\activate      # Windows
+  python -m venv venv
+  source venv/bin/activate   # Mac/Linux
+  venv\Scripts\activate      # Windows
 
-📜 License
+**📜 License**
 
-This project is provided for educational and testing purposes.
-Please use responsibly and avoid running excessive automation on shared servers.
+_This project is provided for educational and testing purposes.
+Please use responsibly and avoid running excessive automation on shared servers._
 
