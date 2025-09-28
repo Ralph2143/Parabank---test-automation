@@ -59,15 +59,15 @@ Payments/Transfers: Random amounts within predefined ranges.
 
  1.Install dependencies:
 
-pip install selenium openpyxl
+`pip install selenium openpyxl`
 
  2.Download and match the correct chromedriver.exe to your Chrome version.
  3.Update config values inside each script if needed (paths, run counts, credentials).
  4.Run scripts individually:
 
-python parabank_register_save.py
-python parabank_bulk_payments_excel.py
-python parabank_transfer_random.py
+`python parabank_register_save.py`
+`python parabank_bulk_payments_excel.py`
+`python parabank_transfer_random.py`
 
  5.Inspect generated Excel files for logged results.
 
