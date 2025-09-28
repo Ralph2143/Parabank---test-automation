@@ -81,7 +81,7 @@ Payments/Transfers: Random amounts within predefined ranges.
 
 `python parabank_transfer_random.py`
 
- 5.Inspect generated Excel files for logged results.**
+ 5.Inspect generated Excel files for logged results.
 
 ## 8. Pass/Fail Criteria
 
