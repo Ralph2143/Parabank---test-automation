@@ -1,6 +1,6 @@
-#Parabank Automation Test Plan---
+# Parabank Automation Test Plan---
 
-##1. Overview
+## 1. Overview
 
 This project contains automated QA scripts for the Parabank demo banking site.
 The scripts demonstrate bulk user actions and data logging using Python, Selenium WebDriver, and OpenPyXL.
