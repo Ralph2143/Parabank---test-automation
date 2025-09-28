@@ -24,7 +24,7 @@ The scripts demonstrate bulk user actions and data logging using Python, Seleniu
 
 ## 3. Scope
 
-In Scope
+####In Scope
 
 -Web UI workflows listed above on the public Parabank demo site.
 
@@ -32,7 +32,7 @@ In Scope
 
 -Basic verification (page loads, success messages).
 
-Out of Scope
+####Out of Scope
 
 -Backend validation of actual banking logic.
 
