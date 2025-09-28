@@ -66,7 +66,7 @@ Payments/Transfers: Random amounts within predefined ranges.
  3.Update config values inside each script if needed (paths, run counts, credentials).
  4.Run scripts individually:
 
-`python parabank_register_save.py`
+<pre> ```python # parabank_register_save.py # ``` </pre>
 `python parabank_bulk_payments_excel.py`
 `python parabank_transfer_random.py`
 
