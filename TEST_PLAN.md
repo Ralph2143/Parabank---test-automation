@@ -3,7 +3,9 @@
 ## 1. Overview
 
 This project contains automated QA scripts for the Parabank demo banking site.
+
 The scripts demonstrate bulk user actions and data logging using Python, Selenium WebDriver, and OpenPyXL.
+
 
 | Script                              | Purpose                                                     | Output                     |
 | ----------------------------------- | ----------------------------------------------------------- | -------------------------- |
@@ -15,7 +17,9 @@ The scripts demonstrate bulk user actions and data logging using Python, Seleniu
 ## 2. Test Objectives
 
 -Verify that key Parabank features (registration, bill pay, transfers) accept valid data and process transactions.
+
 -Demonstrate automated data entry, navigation, and result logging.
+
 -Capture output data for analysis and reporting.
 
 ## 3. Scope
@@ -23,12 +27,15 @@ The scripts demonstrate bulk user actions and data logging using Python, Seleniu
 In Scope
 
 -Web UI workflows listed above on the public Parabank demo site.
+
 -Data logging to Excel.
+
 -Basic verification (page loads, success messages).
 
 Out of Scope
 
 -Backend validation of actual banking logic.
+
 -Performance, security, or penetration testing.
 
 
@@ -69,7 +76,9 @@ Payments/Transfers: Random amounts within predefined ranges.
  4.Run scripts individually:
 
 `python parabank_register_save.py`
+
 `python parabank_bulk_payments_excel.py`
+
 `python parabank_transfer_random.py`
 
  5.Inspect generated Excel files for logged results.**
@@ -77,16 +86,20 @@ Payments/Transfers: Random amounts within predefined ranges.
 ## 8. Pass/Fail Criteria
 
 -Pass: Script executes all iterations without unhandled exceptions and logs all records to Excel.
+
 -Fail: Script crashes, fails to log data, or produces incomplete Excel files.
 
 
 ## 9. Reporting
 
 -Excel workbooks serve as execution evidence.
+
 -Console output provides run status and errors.
 
 ## 10. Maintenance
 
 -Update chromedriver.exe when Chrome updates.
+
 -Adjust element locators if Parabank UI changes.
+
 -Tune run counts or data ranges for load demonstrations.
