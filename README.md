@@ -94,10 +94,12 @@ Each script includes configurable variables at the top:
   Randomized data arrays (names, cities, etc.)
 
 **5️⃣ Run a script**
-```bash
-  python billpay.py
-  python fundtransfer.py
-  python registration.py
+
+  `python billpay.py`
+  
+ `python fundtransfer.py`
+ 
+ `python registration.py`
 
 The output Excel files (payments.xlsx, fund_transfers.xlsx, registered_accounts.xlsx) will be created/updated automatically
 in the project directory.
