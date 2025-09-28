@@ -99,7 +99,8 @@ Each script includes configurable variables at the top:
   python fundtransfer.py
   python registration.py
 
-The output Excel files (payments.xlsx, fund_transfers.xlsx, registered_accounts.xlsx) will be created/updated automatically in the project directory.
+The output Excel files (payments.xlsx, fund_transfers.xlsx, registered_accounts.xlsx) will be created/updated automatically
+in the project directory.
 
 
 This version reflects:
