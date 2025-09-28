@@ -1,17 +1,17 @@
 # Parabank---test-automation
 
-This repository contains **Selenium-based automation scripts** designed to simulate various user actions on the [Parabank](https://parabank.parasoft.com/parabank/index.htm) demo banking site.  
-These scripts are useful for **testing, automation practice, and QA scenarios**, such as bulk bill payments, fund transfers, and account registration.
+This repository contains **Selenium-based automation scripts** that simulate key user actions on the [Parabank](https://parabank.parasoft.com/parabank/index.htm) demo banking site.  
+The scripts are designed for **testing, QA practice, and automation learning**, including bill payments, fund transfers, and bulk account registration.
 
 ---
 
 ## 📂 Project Structure
 
-| File Name         | Description                                                                                 |
-|-------------------|---------------------------------------------------------------------------------------------|
-| **billpay.py**    | Automates multiple **Bill Payments** with randomized payee information to simulate bulk transactions. |
-| **fundtransfer.py** | Logs in and performs a series of **fund transfers** with varying amounts.                  |
-| **registration.py** | Automates **new user registration** by creating multiple accounts with random details.     |
+| File Name               | Description                                                                                             |
+|--------------------------|---------------------------------------------------------------------------------------------------------|
+| **billpay.py**           | Automates **Bill Payments** with randomized payee details and logs each successful transaction to `payments.xlsx`. |
+| **fundtransfer.py**      | Logs in, performs **fund transfers** using random amounts (1–10,000), and records each transfer to `fund_transfers.xlsx`. |
+| **registration.py**      | Automates **new user registrations** and saves every created account (username, password, and details) to `registered_accounts.xlsx`. |
 
 ---
 
@@ -19,27 +19,33 @@ These scripts are useful for **testing, automation practice, and QA scenarios**,
 
 ### ✅ billpay.py
 - Logs in with predefined credentials.
-- Navigates to the **Bill Pay** page.
-- Randomly generates payee names, addresses, and amounts.
-- Repeats the payment process multiple times (`NUM_PAYMENTS` configurable).
+- Navigates to **Bill Pay**.
+- Randomly generates payee names, addresses, and payment amounts.
+- Repeats the payment process a configurable number of times (`NUM_PAYMENTS`).
+- **Automatically logs each successful payment** (name, amount, etc.) to an Excel file (`payments.xlsx`).
 
 ### ✅ fundtransfer.py
 - Logs in with predefined credentials.
-- Navigates to the **Transfer Funds** page.
-- Executes multiple transfers using a list of preset amounts.
+- Navigates to **Transfer Funds**.
+- Executes a configurable number of transfers (`NUM_TRANSFERS`).
+- Chooses a **random amount between 1 and 10,000** for each transfer.
+- **Logs every transfer** (timestamp, amount, and status) to `fund_transfers.xlsx`.
 
 ### ✅ registration.py
-- Registers multiple new accounts (`Num_Reg` configurable).
-- Randomizes user details (name, address, phone, SSN) for each registration.
-- Automatically increments usernames (`test1`, `test2`, …).
+- Creates multiple **new user accounts** (`Num_Reg` configurable).
+- Randomizes all user details (name, address, phone, SSN) for each registration.
+- Automatically increments usernames (e.g., `test1`, `test2`, …).
+- **Saves all registered account data** (username, password, and all form fields) to `registered_accounts.xlsx`.
 
 ---
-**🧪 Notes**
 
-  The Parabank site is a public demo, so data resets periodically.
-  Scripts are intended for testing and educational purposes only.
-  Use the --headless=new Chrome option if you want to run the scripts without opening a browser window:
+## 🧪 Notes
+- Parabank is a **public demo site**; data resets periodically.
+- These scripts are **for testing and educational use only**.
+- To run without opening a browser window, enable headless mode:
+  ```python
   options.add_argument("--headless=new")
+
 
 **💡 Tips**
 Increase WAIT_SECONDS if you have a slow internet connection.
@@ -61,7 +67,7 @@ Please use responsibly and avoid running excessive automation on shared servers.
 - **ChromeDriver** (matching your Chrome version)
 - Required Python package:
   ```bash
-  pip install selenium
+  pip install selenium openpyxl 
 
 **  🚀 Setup & Usage**
 
@@ -71,7 +77,7 @@ Please use responsibly and avoid running excessive automation on shared servers.
 `cd Parabank---test-automation`
 
 **2️⃣ Install dependencies**
-`pip install selenium`
+`pip install selenium openpyxl`
 
 **3️⃣ Download and place ChromeDriver**
 
@@ -84,13 +90,21 @@ Please use responsibly and avoid running excessive automation on shared servers.
 
 Each script includes configurable variables at the top:
   `USERNAME, PASSWORD` (login credentials)
-  `NUM_PAYMENTS / Num_Reg` (loop counts)
-  Randomized data arrays (names, cities, amounts, etc.)
+  `NUM_PAYMENTS / NUM_TRANSFERS / Num_Reg` (loop counts)
+  Randomized data arrays (names, cities, etc.)
 
 **5️⃣ Run a script**
 ```bash
   python billpay.py
   python fundtransfer.py
   python registration.py
+
+The output Excel files (payments.xlsx, fund_transfers.xlsx, registered_accounts.xlsx) will be created/updated automatically in the project directory.
+
+
+This version reflects:
+- **Excel logging** in all scripts.
+- **Random transfer amounts** with adjustable run counts.
+- Clear instructions for dependencies (`selenium`, `openpyxl`).
 
 
