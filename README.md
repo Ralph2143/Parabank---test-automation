@@ -55,6 +55,8 @@ parabank_login(driver, wait, BASE_URL)`
 #### 2. Once logged in, each script continues its specific workflow — e.g., transfers, payments, or registration.
 #### 3. Results are automatically written to Excel files for easy tracking.
 
+---
+
 ### 🧪 Notes
 
 Parabank is a public demo banking site, and data resets periodically.
@@ -75,6 +77,8 @@ To run without showing a browser window (headless mode):
 ### Dependencies:
 
 `pip install selenium openpyxl`
+
+---
 
 ### 🚀 Setup & Usage
 
@@ -113,6 +117,8 @@ Edit only login_helper.py:
 Excel files (fund_transfers.xlsx, payments.xlsx, registered_accounts.xlsx) will be automatically created or updated in the project directory.
 
 
+---
+
 
 ### 💡Tips
 
@@ -126,6 +132,7 @@ Use a Python virtual environment for isolated dependencies:
 
 `source venv/bin/activate`  # Mac/Linux
 
+---
 
 
 ### 📜 License
