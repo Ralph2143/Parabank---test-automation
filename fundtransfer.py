@@ -2,21 +2,19 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 import time, random, openpyxl
 from openpyxl import Workbook
 from datetime import datetime
+from login_helper import parabank_login
 
 # ---- Config ----
-CHROMEDRIVER_PATH = "chromedriver.exe"   # update to full path if needed
+CHROMEDRIVER_PATH = "chromedriver.exe"
 BASE_URL = "https://parabank.parasoft.com/parabank/index.htm"
-USERNAME = "test1"
-PASSWORD = "Th15!s4T3st"
 WAIT_SECONDS = 10
-RUN_COUNT = 100                            # <---- change this to control number of transfers
+RUN_COUNT = 100
 EXCEL_FILE = "fund_transfers.xlsx"
 
 # ---- Excel setup ----
@@ -36,29 +34,12 @@ wait = WebDriverWait(driver, WAIT_SECONDS)
 
 try:
     print("[INFO] Opening Parabank...")
-    driver.get(BASE_URL)
+    parabank_login(driver, wait, BASE_URL)  # ✅ Login handled by helper
 
-    print("[INFO] Logging in...")
-    username_input = wait.until(EC.presence_of_element_located((By.NAME, "username")))
-    username_input.clear()
-    username_input.send_keys(USERNAME)
 
-    password_input = driver.find_element(By.NAME, "password")
-    password_input.clear()
-    password_input.send_keys(PASSWORD)
-    password_input.send_keys(Keys.RETURN)
-
-    wait.until(EC.any_of(
-        EC.presence_of_element_located((By.XPATH, "//h1[contains(text(),'Accounts Overview')]")),
-        EC.presence_of_element_located((By.LINK_TEXT, "Log Out"))
-    ))
-    print("✅ Login successful!")
-
-    # Go to Transfer Funds page
     transfer_link = wait.until(EC.presence_of_element_located((By.LINK_TEXT, "Transfer Funds")))
     ActionChains(driver).move_to_element(transfer_link).click().perform()
 
-    # ---- Perform Transfers ----
     for i in range(RUN_COUNT):
         amount = random.randint(1, 10000)
         print(f"[INFO] Run {i+1}/{RUN_COUNT}: transferring {amount}")
@@ -71,11 +52,9 @@ try:
         time.sleep(1)
         transfer_btn.click()
 
-        # log to Excel
         ws.append([datetime.now().strftime("%Y-%m-%d %H:%M:%S"), amount])
         wb.save(EXCEL_FILE)
 
-        # wait and return to Transfer Funds page
         time.sleep(2)
         transfer_link = wait.until(EC.presence_of_element_located((By.LINK_TEXT, "Transfer Funds")))
         ActionChains(driver).move_to_element(transfer_link).click().perform()

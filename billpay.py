@@ -2,17 +2,15 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time, random, os
 from openpyxl import Workbook, load_workbook
+from login_helper import parabank_login  # ✅ Import reusable login
 
 # ---- Config ----
 CHROMEDRIVER_PATH = "chromedriver.exe"
 BASE_URL = "https://parabank.parasoft.com/parabank/index.htm"
-USERNAME = "test"
-PASSWORD = "test"
 WAIT_SECONDS = 10
 NUM_PAYMENTS = 100
 EXCEL_FILE = "payments.xlsx"
@@ -34,7 +32,7 @@ if os.path.exists(EXCEL_FILE):
 else:
     wb = Workbook()
     ws = wb.active
-    ws.append(["Payment#", "Payee Name", "Amount", "Timestamp"])  # header row
+    ws.append(["Payment#", "Payee Name", "Amount", "Timestamp"])
 
 def log_payment(i, name, amount):
     ws.append([i, name, amount, time.strftime("%Y-%m-%d %H:%M:%S")])
@@ -48,28 +46,13 @@ wait = WebDriverWait(driver, WAIT_SECONDS)
 
 try:
     print("[INFO] Opening Parabank...")
-    driver.get(BASE_URL)
-
-    username_input = wait.until(EC.presence_of_element_located((By.NAME,"username")))
-    username_input.clear()
-    username_input.send_keys(USERNAME)
-
-    password_input = driver.find_element(By.NAME,"password")
-    password_input.clear()
-    password_input.send_keys(PASSWORD)
-    password_input.send_keys(Keys.RETURN)
-
-    wait.until(EC.any_of(
-        EC.presence_of_element_located((By.XPATH,"//h1[contains(text(),'Accounts Overview')]")),
-        EC.presence_of_element_located((By.LINK_TEXT,"Log Out"))
-    ))
-    print("✅ Login successful!")
+    parabank_login(driver, wait, BASE_URL)  # ✅ Login handled by helper
 
     for i in range(1, NUM_PAYMENTS + 1):
         print(f"[INFO] Starting payment #{i}...")
-        bill_pay_link = wait.until(EC.element_to_be_clickable((By.LINK_TEXT,"Bill Pay")))
+        bill_pay_link = wait.until(EC.element_to_be_clickable((By.LINK_TEXT, "Bill Pay")))
         bill_pay_link.click()
-        wait.until(EC.presence_of_element_located((By.NAME,"payee.name")))
+        wait.until(EC.presence_of_element_located((By.NAME, "payee.name")))
 
         random_name = f"{random.choice(first_names)} {random.choice(last_names)}"
         random_amount = random.choice(amounts)
@@ -87,7 +70,7 @@ try:
         payment_btn = driver.find_element(By.CSS_SELECTOR,"input.button[value='Send Payment']")
         time.sleep(1)
         payment_btn.click()
-        time.sleep(1)  # wait for confirmation
+        time.sleep(1)
 
         print(f"✅ Payment #{i} submitted.")
         log_payment(i, random_name, random_amount)
