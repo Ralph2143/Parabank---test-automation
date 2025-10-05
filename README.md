@@ -36,7 +36,7 @@ The scripts are designed for **testing, QA practice, and automation learning**, 
 - Automatically increments usernames (e.g., `test1`, `test2`, …).
 - **Saves all registered account data** (username, password, and all form fields) to `registered_accounts.xlsx`.
 
-###✅ login_helper.py
+### ✅ login_helper.py
 
 -Centralized credentials for all automation scripts (USERNAME, PASSWORD).
 -Exposes a reusable parabank_login(driver, wait, base_url) function.
