@@ -7,36 +7,43 @@ This project contains automated QA scripts for the Parabank demo banking site.
 The scripts demonstrate bulk user actions and data logging using Python, Selenium WebDriver, and OpenPyXL.
 
 
-| Script                              | Purpose                                                     | Output                     |
-| ----------------------------------- | ----------------------------------------------------------- | -------------------------- |
-| **parabank_register_save.py**       | Registers multiple new user accounts with randomized data   | `registered_accounts.xlsx` |
-| **parabank_bulk_payments_excel.py** | Performs repeated bill-pay transactions and records details | `payments.xlsx`            |
-| **parabank_transfer_random.py**     | Executes multiple random fund transfers between accounts    | `fund_transfers.xlsx`      |
+| Script                              | Purpose                                                                 | Output                       |
+| ----------------------------------- | ----------------------------------------------------------------------- | ---------------------------- |
+| **parabank_register_save.py**       | Registers multiple new user accounts with randomized data               | `registered_accounts.xlsx`   |
+| **parabank_bulk_payments_excel.py** | Performs repeated bill-pay transactions and records details             | `payments.xlsx`              |
+| **parabank_transfer_random.py**     | Executes multiple random fund transfers between accounts                | `fund_transfers.xlsx`        |
+| **login_helper.py**                 | Contains reusable login logic and centralized credentials configuration | *Used internally by scripts* |
+
+
 
 
 ## 2. Test Objectives
 
--Verify that key Parabank features (registration, bill pay, transfers) accept valid data and process transactions.
+- Verify that key Parabank features (registration, bill pay, transfers) accept valid data and process transactions correctly.
 
--Demonstrate automated data entry, navigation, and result logging.
+- Demonstrate automated data entry, navigation, and result logging.
 
--Capture output data for analysis and reporting.
+- Ensure maintainability by centralizing login credentials in login_helper.py.
+
+- Capture output data for analysis and reporting.
 
 ## 3. Scope
 
 #### In Scope
 
--Web UI workflows listed above on the public Parabank demo site.
+- Web UI workflows listed above on the public Parabank demo site.
 
--Data logging to Excel.
+- Data logging to Excel.
 
--Basic verification (page loads, success messages).
+- Basic verification (page loads, success messages).
+
+- Credential handling through a shared login helper module.
 
 #### Out of Scope
 
--Backend validation of actual banking logic.
+- Backend validation of actual banking logic.
 
--Performance, security, or penetration testing.
+- Performance, security, or penetration testing.
 
 
 ## 4. Test Environment
@@ -49,19 +56,22 @@ The scripts demonstrate bulk user actions and data logging using Python, Seleniu
 | Python    | 3.10+                                                |
 | Libraries | `selenium`, `openpyxl`                               |
 
+
 ## 5. Test Data
 
-User details: Randomized first/last names, addresses, phone numbers, SSNs, usernames with numeric suffix.
-
+User details: Randomized first/last names, addresses, phone numbers, SSNs, and usernames with numeric suffixes.
 Payments/Transfers: Random amounts within predefined ranges.
+Login credentials: Stored and maintained in login_helper.py for centralized updates.
 
 ## 6. Test Scenarios
 
-| ID     | Script                            | Scenario                     | Expected Result                                                                |
-| ------ | --------------------------------- | ---------------------------- | ------------------------------------------------------------------------------ |
-| REG-01 | `parabank_register_save.py`       | Register 30 unique users     | Each registration completes without error; Excel file contains 30 rows of data |
-| PAY-01 | `parabank_bulk_payments_excel.py` | Perform 100 bill payments    | Each payment confirms success; Excel logs payment#, name, amount, timestamp    |
-| TRF-01 | `parabank_transfer_random.py`     | Perform 100 random transfers | Each transfer confirms success; Excel logs timestamp and amount                |
+| ID     | Script                            | Scenario                     | Expected Result                                                                  |
+| ------ | --------------------------------- | ---------------------------- | -------------------------------------------------------------------------------- |
+| REG-01 | `parabank_register_save.py`       | Register 30 unique users     | Each registration completes without error; Excel file contains 30 rows of data   |
+| PAY-01 | `parabank_bulk_payments_excel.py` | Perform 100 bill payments    | Each payment confirms success; Excel logs payment#, name, amount, timestamp      |
+| TRF-01 | `parabank_transfer_random.py`     | Perform 100 random transfers | Each transfer confirms success; Excel logs timestamp and amount                  |
+| LGN-01 | `login_helper.py`                 | Reusable login logic         | Login succeeds using credentials defined in helper; imported scripts run cleanly |
+
 
 ## 7. Execution Steps
 
@@ -71,7 +81,7 @@ Payments/Transfers: Random amounts within predefined ranges.
 
  2.Download and match the correct chromedriver.exe to your Chrome version.
  
- 3.Update config values inside each script if needed (paths, run counts, credentials).
+ 3. Update login credentials only in `login_helper.py` if they change.
  
  4.Run scripts individually:
 
@@ -85,21 +95,23 @@ Payments/Transfers: Random amounts within predefined ranges.
 
 ## 8. Pass/Fail Criteria
 
--Pass: Script executes all iterations without unhandled exceptions and logs all records to Excel.
+- Pass: Script executes all iterations without unhandled exceptions and logs all records to Excel.
 
--Fail: Script crashes, fails to log data, or produces incomplete Excel files.
+- Fail: Script crashes, fails to log data, or produces incomplete Excel files.
 
 
 ## 9. Reporting
 
--Excel workbooks serve as execution evidence.
+- Excel workbooks serve as execution evidence.
 
--Console output provides run status and errors.
+- Console output provides run status and errors.
 
 ## 10. Maintenance
 
--Update chromedriver.exe when Chrome updates.
+- Update chromedriver.exe when Chrome updates.
 
--Adjust element locators if Parabank UI changes.
+- Modify credentials only in login_helper.py.
 
--Tune run counts or data ranges for load demonstrations.
+- Adjust element locators if Parabank UI changes.
+
+- Tune run counts or data ranges for load demonstrations.
