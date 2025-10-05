@@ -20,15 +20,15 @@ The scripts are designed for **testing, QA practice, and automation learning**, 
 
 ### ✅ billpay.py
 - Imports and uses parabank_login() from login_helper.py.
--Automates bulk bill payments to random payees.
--Randomizes names, addresses, and payment amounts.
--Records each payment (number, payee, amount, timestamp) in payments.xlsx.
+- Automates bulk bill payments to random payees.
+- Randomizes names, addresses, and payment amounts.
+- Records each payment (number, payee, amount, timestamp) in payments.xlsx.
 
 ### ✅ fundtransfer.py
--Imports and uses parabank_login() from login_helper.py.
--Navigates to Transfer Funds and performs a configurable number of transfers.
--Randomizes each transfer amount between 1–10,000.
--Logs every transaction (timestamp + amount) to fund_transfers.xlsx.
+- Imports and uses parabank_login() from login_helper.py.
+- Navigates to Transfer Funds and performs a configurable number of transfers.
+- Randomizes each transfer amount between 1–10,000.
+- Logs every transaction (timestamp + amount) to fund_transfers.xlsx.
 
 ### ✅ registration.py
 - Creates multiple **new user accounts** (`Num_Reg` configurable).
@@ -38,16 +38,16 @@ The scripts are designed for **testing, QA practice, and automation learning**, 
 
 ### ✅ login_helper.py
 
--Centralized credentials for all automation scripts (USERNAME, PASSWORD).
--Exposes a reusable parabank_login(driver, wait, base_url) function.
--Handles login validation automatically.
--Update credentials once here instead of modifying every script.
+- Centralized credentials for all automation scripts (USERNAME, PASSWORD).
+- Exposes a reusable parabank_login(driver, wait, base_url) function.
+- Handles login validation automatically.
+- Update credentials once here instead of modifying every script.
 
 ---
-###🧩 How It Works
+### 🧩 How It Works
 
 #### 1. login_helper.py holds the login logic and credentials.
-All scripts call:
+scripts call:
 `from login_helper import parabank_login
 parabank_login(driver, wait, BASE_URL)`
 
@@ -63,6 +63,7 @@ Scripts are for educational and QA testing purposes only.
 To run without showing a browser window (headless mode):
 `options.add_argument("--headless=new")`
 
+
 ### ⚙️ Requirements
 
 `Python 3.8+`
@@ -76,12 +77,15 @@ To run without showing a browser window (headless mode):
 `pip install selenium openpyxl`
 
 ### 🚀 Setup & Usage
+
 #### 1️⃣ Clone the repository
 `git clone https://github.com/<your-username>/Parabank---test-automation.git`
 `cd Parabank---test-automation`
 
+
 #### 2️⃣ Install dependencies
 `pip install selenium openpyxl`
+
 
 #### 3️⃣ Download and place ChromeDriver
 
@@ -91,12 +95,14 @@ Place it in the project folder or update this variable in each script:
 
 `CHROMEDRIVER_PATH = "chromedriver.exe"`
 
+
 #### 4️⃣ Update credentials (if needed)
 
 Edit only login_helper.py:
 
 `USERNAME = "your_username"`
 `PASSWORD = "your_password"`
+
 
 #### 5️⃣ Run the desired script
 `python fundtransfer.py`
@@ -106,15 +112,21 @@ Edit only login_helper.py:
 
 Excel files (fund_transfers.xlsx, payments.xlsx, registered_accounts.xlsx) will be automatically created or updated in the project directory.
 
-###💡 Tips
+
+
+### 💡Tips
 
 Increase WAIT_SECONDS if you have a slower internet connection.
 
 Use a Python virtual environment for isolated dependencies:
 
 `python -m venv venv`
-`venv\Scripts\activate`   # Windows
+
+`venv\Scripts\activate`# Windows
+
 `source venv/bin/activate`  # Mac/Linux
+
+
 
 ### 📜 License
 
