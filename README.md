@@ -7,29 +7,28 @@ The scripts are designed for **testing, QA practice, and automation learning**, 
 
 ## 📂 Project Structure
 
-| File Name               | Description                                                                                             |
-|--------------------------|---------------------------------------------------------------------------------------------------------|
-| **billpay.py**           | Automates **Bill Payments** with randomized payee details and logs each successful transaction to `payments.xlsx`. |
-| **fundtransfer.py**      | Logs in, performs **fund transfers** using random amounts (1–10,000), and records each transfer to `fund_transfers.xlsx`. |
-| **registration.py**      | Automates **new user registrations** and saves every created account (username, password, and details) to `registered_accounts.xlsx`. |
+| File Name                                                 | Description                                                                                                             |
+| --------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| **`login_helper.py`**                                     | Contains the **reusable login function** and **centralized credentials** for all scripts. Update credentials here only. |
+| **`fundtransfer.py`**                                     | Automates **fund transfers** using random amounts and logs results to `fund_transfers.xlsx`.                            |
+| **`billpay.py`**                                          | Automates **bulk bill payments** with randomized payee data and logs results to `payments.xlsx`.                        |
+| **`registration.py`**                                     | Automates **new user registrations** and saves account info to `registered_accounts.xlsx`.                              |
 
 ---
 
 ## ⚡ Features
 
 ### ✅ billpay.py
-- Logs in with predefined credentials.
-- Navigates to **Bill Pay**.
-- Randomly generates payee names, addresses, and payment amounts.
-- Repeats the payment process a configurable number of times (`NUM_PAYMENTS`).
-- **Automatically logs each successful payment** (name, amount, etc.) to an Excel file (`payments.xlsx`).
+- Imports and uses parabank_login() from login_helper.py.
+-Automates bulk bill payments to random payees.
+-Randomizes names, addresses, and payment amounts.
+-Records each payment (number, payee, amount, timestamp) in payments.xlsx.
 
 ### ✅ fundtransfer.py
-- Logs in with predefined credentials.
-- Navigates to **Transfer Funds**.
-- Executes a configurable number of transfers (`NUM_TRANSFERS`).
-- Chooses a **random amount between 1 and 10,000** for each transfer.
-- **Logs every transfer** (timestamp, amount, and status) to `fund_transfers.xlsx`.
+-Imports and uses parabank_login() from login_helper.py.
+-Navigates to Transfer Funds and performs a configurable number of transfers.
+-Randomizes each transfer amount between 1–10,000.
+-Logs every transaction (timestamp + amount) to fund_transfers.xlsx.
 
 ### ✅ registration.py
 - Creates multiple **new user accounts** (`Num_Reg` configurable).
@@ -37,77 +36,88 @@ The scripts are designed for **testing, QA practice, and automation learning**, 
 - Automatically increments usernames (e.g., `test1`, `test2`, …).
 - **Saves all registered account data** (username, password, and all form fields) to `registered_accounts.xlsx`.
 
+###✅ login_helper.py
+
+-Centralized credentials for all automation scripts (USERNAME, PASSWORD).
+-Exposes a reusable parabank_login(driver, wait, base_url) function.
+-Handles login validation automatically.
+-Update credentials once here instead of modifying every script.
+
 ---
+###🧩 How It Works
 
-## 🧪 Notes
-- Parabank is a **public demo site**; data resets periodically.
-- These scripts are **for testing and educational use only**.
-- To run without opening a browser window, enable headless mode:
-  ```python
-  options.add_argument("--headless=new")
-
-
-**💡 Tips**
-Increase WAIT_SECONDS if you have a slow internet connection.
-Use a virtual environment (venv) to keep dependencies isolated:
-  `python -m venv venv`
- `source venv/bin/activate`  # Mac/Linux
-  `venv\Scripts\activate`     # Windows
-
-**📜 License**
-
-_This project is provided for educational and testing purposes.
-Please use responsibly and avoid running excessive automation on shared servers._
+#### 1. login_helper.py holds the login logic and credentials.
+All scripts call:
+`from login_helper import parabank_login
+parabank_login(driver, wait, BASE_URL)`
 
 
-## 🛠️ Requirements
+#### 2. Once logged in, each script continues its specific workflow — e.g., transfers, payments, or registration.
+#### 3. Results are automatically written to Excel files for easy tracking.
 
-- **Python 3.8+**
-- **Google Chrome Browser**
-- **ChromeDriver** (matching your Chrome version)
-- Required Python package:
-  ```bash
-  pip install selenium openpyxl 
+### 🧪 Notes
 
-**  🚀 Setup & Usage**
+Parabank is a public demo banking site, and data resets periodically.
+Scripts are for educational and QA testing purposes only.
 
-**1️⃣ Clone this repository**
+To run without showing a browser window (headless mode):
+`options.add_argument("--headless=new")`
 
+### ⚙️ Requirements
+
+`Python 3.8+`
+
+`Google Chrome Browser`
+
+`Matching ChromeDriver`
+
+### Dependencies:
+
+`pip install selenium openpyxl`
+
+### 🚀 Setup & Usage
+#### 1️⃣ Clone the repository
 `git clone https://github.com/<your-username>/Parabank---test-automation.git`
 `cd Parabank---test-automation`
 
-**2️⃣ Install dependencies**
+#### 2️⃣ Install dependencies
 `pip install selenium openpyxl`
 
-**3️⃣ Download and place ChromeDriver**
+#### 3️⃣ Download and place ChromeDriver
 
-**Download ChromeDriver**
-  matching your Chrome version.
-  Place it in the project directory or specify its path in the script:
-  CHROMEDRIVER_PATH = "chromedriver.exe"
+Download ChromeDriver that matches your Chrome version.
 
-**4️⃣ Edit Configurations (Optional)**
+Place it in the project folder or update this variable in each script:
 
-Each script includes configurable variables at the top:
-  `USERNAME, PASSWORD` (login credentials)
-  `NUM_PAYMENTS / NUM_TRANSFERS / Num_Reg` (loop counts)
-  Randomized data arrays (names, cities, etc.)
+`CHROMEDRIVER_PATH = "chromedriver.exe"`
 
-**5️⃣ Run a script**
+#### 4️⃣ Update credentials (if needed)
 
-  `python billpay.py`
-  
- `python fundtransfer.py`
- 
- `python registration.py`
+Edit only login_helper.py:
 
-The output Excel files (payments.xlsx, fund_transfers.xlsx, registered_accounts.xlsx) will be created/updated automatically
-in the project directory.
+`USERNAME = "your_username"`
+`PASSWORD = "your_password"`
+
+#### 5️⃣ Run the desired script
+`python fundtransfer.py`
+`python parabank_bulk_payments_excel.py`
+`python registration.py`
 
 
-This version reflects:
-- **Excel logging** in all scripts.
-- **Random transfer amounts** with adjustable run counts.
-- Clear instructions for dependencies (`selenium`, `openpyxl`).
+Excel files (fund_transfers.xlsx, payments.xlsx, registered_accounts.xlsx) will be automatically created or updated in the project directory.
 
+###💡 Tips
+
+Increase WAIT_SECONDS if you have a slower internet connection.
+
+Use a Python virtual environment for isolated dependencies:
+
+`python -m venv venv`
+`venv\Scripts\activate`   # Windows
+`source venv/bin/activate`  # Mac/Linux
+
+### 📜 License
+
+This project is for educational and testing purposes only.
+Do not run excessive automation against public servers.
 
